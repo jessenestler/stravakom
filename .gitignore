@@ -1,4 +1,5 @@
 # project data
+activities.json
 data/*.json
 tokens.json
 
