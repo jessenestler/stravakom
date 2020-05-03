@@ -8,7 +8,7 @@ do
     then
         echo "Creating Activity Stream for $act_id..."
         # save each activity stream
-        curl -X GET https://www.strava.com/api/v3/activities/$act_id/streams \
+        curl -s -X GET https://www.strava.com/api/v3/activities/$act_id/streams \
         -d access_token=$my_token \
         -d keys=time,latlng,altitude,moving \
         > ./data/$act_id'_stream.json'
