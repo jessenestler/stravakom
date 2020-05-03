@@ -1,5 +1,5 @@
 # project data
-data/*
+data/*.json
 tokens.json
 
 # Byte-compiled / optimized / DLL files
