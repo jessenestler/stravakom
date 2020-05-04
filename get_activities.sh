@@ -2,13 +2,10 @@
 my_token=$(. refresh_auth.sh)
 
 # Get activity information
-if [[ ! -f activities.json ]]
-then
-    echo "Extracting activity info from Strava..."
-    curl -s -X GET https://www.strava.com/api/v3/athlete/activities \
-    -d access_token=$my_token >\
-    activities.json
-fi
+echo "Extracting activity info from Strava..."
+curl -s -X GET https://www.strava.com/api/v3/athlete/activities \
+-d access_token=$my_token >\
+activities.json
 
 # Parse each activity into a new file by ID
 c=$(jq '. | length' activities.json)
