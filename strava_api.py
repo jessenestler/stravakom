@@ -14,7 +14,7 @@ access_token = resp.json()['access_token']
 # Retrieve which activities have already been downloaded and/or pipelined
 # into postgres
 logged = []
-dirs = ['./data/']
+dirs = ['./data/', './data/ingested/']
 for d in dirs:
     for f in os.listdir(d):
         result = re.search('([0-9]+)', f)
