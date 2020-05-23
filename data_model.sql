@@ -1,5 +1,4 @@
-drop schema if exists sandbox;
-drop table if exists sandbox.test;
+drop schema if exists sandbox cascade;
 
 create schema sandbox;
 
