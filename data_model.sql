@@ -3,7 +3,6 @@ drop table if exists sandbox.test;
 
 create schema sandbox;
 
-
 /*
 ingestion table
 adapted from https://info.crunchydata.com/blog/fast-csv-and-json-ingestion-in-postgresql-with-copy
