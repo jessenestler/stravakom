@@ -1,8 +1,24 @@
-## Strava Segment Analysis
-This project is my first dive into both the Strava API and data science fundamentals. I'm an avid mountain biker, and when I ride, I often wonder what goes into K/QOM times on certain downhill segments: does the bike type or brand matter? What about total weekly miles, or maybe riding the segment so often that the trail is committed to memory? These are the kinds of questions I hope to answer, and I would ultimately like to use the answers to see if I could improve my own times on some of my favorite trails.
+# Strava ELT via Python and Postgres
 
-### Requirements
+## That's right: ELT, not ETL
+This project is my first dive into accessing the Strava API with python and loading/transforming that data inside Postgres. You read that right: I'm playing around with SQL as the project's main data processing language.
 
-This project makes use of conda environments to manage python packages, and it also uses environment variables to store Strava API tokens. To make sure you can run these analyses, be sure to register with Strava to receive your access tokens. I used [this tutorial](https://towardsdatascience.com/how-to-hide-your-api-keys-in-python-fb2e1a61b0a0) to set up my keys as environment variables.
+### OK, but... why?
+On a pure nerd-level, I've been meaning to dip my toes into the open source world of data analysis and visualization for a while. This is my first foray into SQL, and I wanted to fuse this interest with my outdoor activity tracking. Maybe now I won't put off a ride or ski because there'll be a lil' angel on my shoulder saying, "But if you don't go, you won't get to play with the data!" Is that a little fucked up? I'll let you be the judge...
 
-This project also makes use of PostgreSQL and the PostGIS extension to perform any spatial analysis tasks.
+## Requirements
+
+This project makes use of `python 3` for extraction, and `postgres 12` with `postgis 3` for loading, transformation, and analysis.
+
+### Authenticating with Strava
+
+This was a beast to figure out. This [video tutorial](https://www.youtube.com/watch?v=sgscChKfGyg) ended up helping immensely. Once I had all the tokens with proper permission levels, I created a tokens.json file, like so:
+
+```json
+{
+    "client_id": "my_id",
+    "client_secret": "my_secret",
+    "refresh_token": "my_refresh_token",
+    "grant_type": "refresh_token"
+}
+```
