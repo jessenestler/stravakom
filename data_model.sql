@@ -30,3 +30,16 @@ create table sandbox.activity
 	achieve_count int,
 	total_energy numeric
 )
+
+-- activity streams
+create table sandbox.streams
+(
+	activity_id bigint references sandbox.activity(activity_id),
+	seconds_from_start int,
+	moving boolean,
+	elevation numeric,
+	lat numeric,
+	long numeric,
+
+	primary key(activity_id, seconds_from_start)
+);
