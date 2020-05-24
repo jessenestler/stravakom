@@ -1,4 +1,4 @@
-if [[ "$(ls ./data/*.json)" ]]; then
+if [[ "$(ls ./data/*.json 2> /dev/null)" ]]; then
     newfiles="yes"
     for file in ./data/*.json
     do
