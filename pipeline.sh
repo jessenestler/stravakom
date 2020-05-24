@@ -1,7 +1,5 @@
 # run the strava api scraper via python and conda
-conda activate stravakom_env
-python strava_api.py
-conda deactivate
+/Users/jessenestler/anaconda3/envs/stravakom_env/bin/python strava_api.py
 
 # add contents of each file to the sandbox.ingested_data table
 if [[ "$(ls ./data/*.json)" ]]; then
