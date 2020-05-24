@@ -15,3 +15,18 @@ create table sandbox.ingested_data
 );
 
 create index ingested_data_idx on sandbox.ingested_data using gin(data);
+
+-- activity info table derived from ingested data
+create table sandbox.activity
+(
+	activity_id bigint primary key,
+	activity_name text,
+	activity_type text,
+	activity_start timestamptz,
+	commute boolean,
+	gear_id text,
+	friend_count int,
+	pr_count int,
+	achieve_count int,
+	total_energy numeric
+)
