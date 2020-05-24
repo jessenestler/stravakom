@@ -1,13 +1,12 @@
-# run the strava api scraper via python and conda
-/Users/jessenestler/anaconda3/envs/stravakom_env/bin/python strava_api.py
+# extract strava data through the python api scraper
+/Users/jessenestler/anaconda3/envs/stravakom_env/bin/python extract.py
 
-# add contents of each file to the sandbox.ingested_data table
-if [[ "$(ls ./data/*.json)" ]]; then
-    for file in ./data/*.json
-    do
-        cat $file | psql -d strava -c 'COPY sandbox.ingested_data (data) from stdin;'
-        mv $file ./data/ingested
-    done
+# load contents of each file into Postgres
+. load.sh
+
+# transform the data inside the database
+if [[ "$newfiles" == "yes" ]]; then
+    psql -f transform.sql
 else
     echo "No new activities to pipeline"
 fi
