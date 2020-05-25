@@ -33,6 +33,11 @@ select 	act_id,
 		(jsonb_array_elements(s)->0)::int,
 		(jsonb_array_elements(s)->1)::bool,
 		(jsonb_array_elements(s)->2)::numeric,
-		(jsonb_array_elements(s)->3->0)::numeric,
-		(jsonb_array_elements(s)->3->1)::numeric
+		ST_SetSRID(
+			ST_Point(
+				(jsonb_array_elements(s)->3->1)::numeric,
+				(jsonb_array_elements(s)->3->0)::numeric
+			),
+			4326
+		)::geography
 from streams;
