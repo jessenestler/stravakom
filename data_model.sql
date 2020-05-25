@@ -39,7 +39,7 @@ create table sandbox.streams
 	seconds_from_start int,
 	moving boolean,
 	elevation numeric,
-	geom geometry --srid 4326
+	shape geography --srid 4326
 
 	primary key(activity_id, seconds_from_start)
 );
