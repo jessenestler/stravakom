@@ -41,3 +41,11 @@ select 	act_id,
 			4326
 		)::geography
 from streams;
+
+-- find duplicate time entries for each activity and delete
+delete 	
+from	sandbox.streams og
+using	sandbox.streams dup
+where 	og.ctid < dup.ctid
+		and og.activity_id = dup.activity_id
+		and og.seconds_from_start = dup.seconds_from_start;
