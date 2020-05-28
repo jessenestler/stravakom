@@ -1,16 +1,9 @@
--- Make line fatures out of the GPS streams, and project
--- to CO North State Plane (epsg: 2876) for now.
+-- Make line fatures out of the GPS streams
 select 	    act.*,
 		    ST_MakeLine(
-			  ST_Transform(gps.shape::geometry, 2876)
+			  gps.shape::geometry
 			  order by gps.seconds_from_start
-		    ) as geom,
-		    ST_Length(
-			  ST_MakeLine(
-				  ST_Transform(gps.shape::geometry, 2876)
-			  	  order by gps.seconds_from_start
-			  )
-		  	)/5280 as shape_length
+		    ) as geom
     from	sandbox.streams gps
     join	sandbox.activity act using(activity_id)
 group by	act.activity_id
