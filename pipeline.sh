@@ -6,7 +6,7 @@
 
 # transform the data inside the database
 if [[ "$newfiles" == "yes" ]]; then
-    psql -f transform.sql
+    psql -d strava -f transform.sql
 else
     echo "No new activities to pipeline"
 fi
